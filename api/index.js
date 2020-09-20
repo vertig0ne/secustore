@@ -1,12 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const routes = require('./routes')
 
 const api = express()
 
 api.use(bodyParser.json())
 api.use(bodyParser.urlencoded({ extended: true }))
 
-// Routes here
+Object.keys(routes).forEach((route) => {
+  api.use(`/${route}`, routes[route])
+})
 
 api.use((e, req, res, next) => {
   const status = e.response ? e.response.status : 500
