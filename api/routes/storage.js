@@ -1,5 +1,5 @@
 const express = require('express')
-const { router } = require('..')
+const router = express.Router()
 
 const gethandler = require('../handlers/get')
 const postHandler = require('../handlers/post')
