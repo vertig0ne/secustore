@@ -16,7 +16,7 @@ describe("post", () => {
     const res = mockResponse()
     const next = jest.fn()
 
-    const data = await handler(req, res, next)
+    await handler(req, res, next)
 
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ id: 'hello' }))
   })
@@ -27,7 +27,7 @@ describe("post", () => {
     const res = mockResponse()
     const next = jest.fn()
 
-    const data = await handler(req, res, next)
+    await handler(req, res, next)
 
     expect(next).toHaveBeenCalledWith(expect.objectContaining({ message: 'no id provided' }))
   })
@@ -38,7 +38,7 @@ describe("post", () => {
     const res = mockResponse()
     const next = jest.fn()
 
-    const data = await handler(req, res, next)
+    await handler(req, res, next)
 
     expect(next).toHaveBeenCalledWith(expect.objectContaining({ message: 'no encryption_key provided' }))
   })
@@ -49,7 +49,7 @@ describe("post", () => {
     const res = mockResponse()
     const next = jest.fn()
 
-    const data = await handler(req, res, next)
+    await handler(req, res, next)
 
     expect(next).toHaveBeenCalledWith(expect.objectContaining({ message: 'no value provided' }))
   })

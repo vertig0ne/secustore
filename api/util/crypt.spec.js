@@ -1,14 +1,13 @@
-const Cryptr = require('cryptr')
+const crypt = require('./crypt')
 
 const testSecret = 'myTotalySecretKey'
 const testData = 'bacon'
 
 describe("crypt", () => {
 
-  it("can encrypt and decrypt data", () => {
-    const cryptr = new Cryptr(testSecret);
-    const encryptedString = cryptr.encrypt(testData)
-    const decryptedString = cryptr.decrypt(encryptedString)
+  it("can encrypt and decrypt", () => {
+    const encryptedString = crypt.encrypt({key: testSecret, data: testData})
+    const decryptedString = crypt.decrypt({key: testSecret, encrypted_data: encryptedString})
 
     expect(decryptedString).toEqual(testData)
   })
